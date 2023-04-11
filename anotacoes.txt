@@ -1,3 +1,20 @@
 # Anotações do curso #
 
+Aula 1 - Docker
+#rumoaoelite
+
+O que é devops e como funciona?
+
+ O termo devops ganhou destaque em 2009 quando patrick debuar ele criou a primeira conferência devops day na belgica e representa as combinações dos termos desenvolvimento e operações. Ele surguiu como uma solução para acabar com o distânciamento entre as equipes de infraestrutura e desenvolvimento, Muito comum em modelos *waterfall* e também para diminuir o tempo entre uma entrega e outra.
+ É Importante deixar claro que devops não é um cargo especifico e não é um conjunto de ferramentas, mas é sim uma cultura colaborativa que engloba: Práticas, Ferramentas e Filosofias.
+ 
+
+Significado waterfall: A metodologia waterfall, também conhecida como modelo cascata, é um modelo tradicional de desenvolvimento de software que segue uma abordagem sequencial e linear, onde cada fase do projeto é concluída antes de passar para a próxima. Aqui está um resumo das principais etapas do modelo waterfall:
+Definição de Requisitos: Nesta fase, os requisitos do projeto são coletados e documentados detalhadamente, com base nas necessidades dos usuários e nas expectativas dos stakeholders.
+Design: Após a definição dos requisitos, o projeto passa para a fase de design, onde os elementos do sistema são planejados e projetados em detalhes. Isso pode incluir o design de arquitetura, design de interface de usuário, design de banco de dados, entre outros.
+Implementação: Na fase de implementação, o código do software é desenvolvido com base no design definido na fase anterior. Os programadores escrevem o código fonte e realizam testes unitários para verificar se o código está funcionando corretamente.
+Testes: Após a implementação, o software passa por uma fase de testes extensivos para identificar e corrigir quaisquer defeitos ou erros. Os testes podem incluir testes de integração, testes de sistema, testes de desempenho, entre outros.
+Implantação: Uma vez que o software tenha sido completamente testado e considerado estável, ele é implantado no ambiente de produção e disponibilizado aos usuários finais.
+Manutenção: Após a implantação, o software pode passar por uma fase de manutenção, onde são feitas correções de bugs, atualizações de segurança, melhorias de desempenho e outras modificações necessárias ao longo do tempo.
+Uma das principais características do modelo waterfall é a sua abordagem sequencial, o que significa que cada fase deve ser concluída antes de prosseguir para a próxima. Isso pode levar a um processo lento e inflexível, uma vez que mudanças nos requisitos ou problemas identificados em fases posteriores podem exigir retrabalho nas fases anteriores. No entanto, o modelo waterfall pode ser útil em certos contextos, especialmente quando os requisitos são claros e estáveis desde o início do projeto. 
 
