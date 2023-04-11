@@ -42,15 +42,14 @@ A fase de Build são onde os códigos construidos pelos desenvolvedores são con
 
 A fase de testes são onde são executados os testes, as analises de código e verificações de falhas, ou seja, são onde eu testo realmente o se o código criado tem algum problema são aqui que entra algumas ferramentas como jeyunit, nunit, sonarkilb e claro tudo isso rodando na pip-line de CIA.
 
-Na fase de Release Ã© aonde eu gero o artefato de entrega, pode ser meu arquivo executavel, a minha imagem docker, o meu arquivo ali .ja ou a, enfim Ã© oque vai ser usado para fazer o deploy em meu ambiente, e nesse ponto Ã© que entram as pip-lines de CID.
+Na fase de Release são aonde eu gero o artefato de entrega, pode ser meu arquivo executavel, a minha imagem docker, o meu arquivo ali .js ou lua, enfim são oque vai ser usado para fazer o deploy em meu ambiente, e nesse ponto são que entram as pip-lines de CID.
 
-No deploy Ã© aonde a aplicaÃ§Ã£o Ã© entregue no ambiente e aqui Ã© onde entra em cena as ferramentas de infraestrutura como cÃ³digo, como o terraform e o assimble, alem de serviÃ§o de cloud como: aws, azure e google. tudo isso integrado na pip-line de "CID".
+No deploy são aonde a aplicação são entregue no ambiente e aqui são onde entra em cena as ferramentas de infraestrutura como código, como o terraform e o assimble, alem de serviços de cloud como: aws, azure e google. tudo isso integrado na pip-line de "CID".
 
-Quando chega na operaÃ§Ã£o eu preciso garantir que a aplicaÃ§Ã£o vai ser executada no ambiente com instabilidade, confiabilidade e resiliencia, e aqui o kubernetes ele entra como protagonista como a principal ferramenta de orquestraÃ§Ã£o de container no mercado.
+Quando chega na operação eu preciso garantir que a aplicação vai ser executada no ambiente com instabilidade, confiabilidade e resiliencia, e aqui o kubernetes ele entra como protagonista como a principal ferramenta de orquestraÃ§Ã£o de container no mercado.
 
-Com a aplicaÃ§Ã£o entregue sendo executada no ambiente chega a hora de monitorar toda a informaÃ§Ã£o e coletar as metricas para aplicaÃ§Ã£o e tambÃ©m do ambiente, para ser utilizadas no planejamento das melhorias alem disso Ã© claro a atencipar qualquer tipo de problema que possa acontecer e Ã© aqui que entra as ferramentas como: prometheus, ieger, elastic e grafana. todos entra em aÃ§Ã£o em forma simutanea.
-Depois volta dnv para o ciclo de planejamento e tudo recomeÃ§a. 
-
+Com a aplicação entregue sendo executada no ambiente chega a hora de monitorar toda a informação e coletar as métricas para aplicação e também do ambiente, para ser utilizadas no planejamento das melhorias alem disso é claro a atencipar qualquer tipo de problema que possa acontecer e são aqui que entra as ferramentas como: prometheus, ieger, elastic e grafana. todos entra em ação em forma simutanea.
+Depois volta dnv para o ciclo de planejamento e tudo recomeça. 
 
 
 Significado waterfall: 
