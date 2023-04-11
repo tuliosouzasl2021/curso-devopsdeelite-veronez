@@ -71,7 +71,8 @@ Comparação entre a contêinerização e a virtualização?
 Por cima da virtualização eu tenho a criação da minha infra virtual aonde eu escolho o quanto de recurso eu vou destinar para cada máquina, criando essa infraestrutura virtual. Logo em seguida eu tenho SO (sistema operacional: Linux, Windows etc..) e a minha aplicação.
  O problema do usa da virtualização é que para cada máquina virtual eu preciso instalar e gerenciar um sistema operacional fora o recurso que consome.
  
- Já na contêinerização é diferente, tem camada de infraestrutura, o sistema operacional e em cima dele eu tenho um contêiner runtime e com ele eu tenho a execução dos meus contêineres que executão os meus processos, e esses processos podem ser uma aplicação .net, java, postgress, jeinks etc... e todos eles executados de forma isolada e eu só comunico eles entre si caso eu realmente queira.
- 
+ Já na contêinerização é diferente, tem camada de infraestrutura, o sistema operacional e em cima dele eu tenho um contêiner runtime e com ele eu tenho a execução dos meus contêineres que executão os meus processos, e esses processos podem ser uma aplicação .net, java, postgress, jeinks etc... e todos eles executados de forma isolada e eu só comunico eles entre si caso eu realmente queira. Sendo assim eu não tenho mais um monte de sistema operacionais para gerenciar e consumir recursos de máquina, pois o contêiner runtime simula o sistema operacional dos meus contêineres, ou seja, ele abstrai o sistema operacional para a minha aplicação.
+ A Contêinerização traz simplicidade na gestão e bastante enconomia de recursos.
+
  
  
