@@ -20,7 +20,7 @@ O que é devops e como funciona?
 
  No quisito "AUTOMAÇÃO" devops defende a construção de piplines para os processos repetitivos e que consome o tempo dos profissionais aumentando muito a produtividade da equipe e com isso as atividades que poderiam durar dias passa a durar horas ou até alguns minutos, então com o uso de piplines CI/CD ou seja de integração e entrega continua, esse processo dura poucos minutos, alem disso você evita falhas humanas desnecessárias em processos manuais, evitando o desgates e a desmotivação do profissional por executar os mesmo processos chatos o tempo todo e direcionar o foco dele para outras areas que demanda maior atenção, como a otimização do software e a resolução de imprevisto.
 
- LEAN, outro pilar importante, 
+ LEAN outro pilar importante, A cultura devops defende o uso de gestão agil no processo de (MINUTO 18:26) 
 
 
 
