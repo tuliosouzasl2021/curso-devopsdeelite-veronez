@@ -14,14 +14,13 @@ O que é devops e como funciona?
  
 # Fundamentos de Devops para clariar #
 
-A cultura devops se base em 5 pilares conhecido pela sigla "CALMS", CULTURA, AUTOMAÇÃO, LEAN/OU ESFORÇO (METODOLOGIA), MEDIÇÃO (MONITORAMENTO) ou COMPARTILHAMENTO (NO CASO COMPARTILHAMENTO EM INGLÊS SIGNIFICA SHARE).
+ A cultura devops se base em 5 pilares conhecido pela sigla "CALMS", CULTURA, AUTOMAÇÃO, LEAN/OU ESFORÇO (METODOLOGIA), MEDIÇÃO (MONITORAMENTO) ou COMPARTILHAMENTO (NO CASO COMPARTILHAMENTO EM INGLÊS SIGNIFICA SHARE).
 
-O primeiro pilar a "CULTURA" fala sobre a mudança de pensamento e comportamento dentro das empresas sobre as equipes para tornar-las mais colaborativas e comunicativas entre si, promovendo uma relação muito mais saudavel entre todas as equipes, com isso as equipes de infra e desenvolvimento ganha um certo empoderamento, na medida em que passa a poder sugir algumas otimazações ou consertar pequenas falhas sem precisa interromper o projeto ou retornar o erro para outra equipe. 
-
-
+ O primeiro pilar a "CULTURA" fala sobre a mudança de pensamento e comportamento dentro das empresas sobre as equipes para tornar-las mais colaborativas e comunicativas entre si, promovendo uma relação muito mais saudavel entre todas as equipes, com isso as equipes de infra e desenvolvimento ganha um certo empoderamento, na medida em que passa a poder sugir algumas otimazações ou consertar pequenas falhas sem precisa interromper o projeto ou retornar o erro para outra equipe. 
 
 
-Significado waterfall: A metodologia waterfall, também conhecida como modelo cascata, é um modelo tradicional de desenvolvimento de software que segue uma abordagem sequencial e linear, onde cada fase do projeto é concluída antes de passar para a próxima. Aqui está um resumo das principais etapas do modelo waterfall:
+Significado waterfall: 
+ A metodologia waterfall, também conhecida como modelo cascata, é um modelo tradicional de desenvolvimento de software que segue uma abordagem sequencial e linear, onde cada fase do projeto é concluída antes de passar para a próxima. Aqui está um resumo das principais etapas do modelo waterfall:
 Definição de Requisitos: Nesta fase, os requisitos do projeto são coletados e documentados detalhadamente, com base nas necessidades dos usuários e nas expectativas dos stakeholders.
 Design: Após a definição dos requisitos, o projeto passa para a fase de design, onde os elementos do sistema são planejados e projetados em detalhes. Isso pode incluir o design de arquitetura, design de interface de usuário, design de banco de dados, entre outros.
 Implementação: Na fase de implementação, o código do software é desenvolvido com base no design definido na fase anterior. Os programadores escrevem o código fonte e realizam testes unitários para verificar se o código está funcionando corretamente.
