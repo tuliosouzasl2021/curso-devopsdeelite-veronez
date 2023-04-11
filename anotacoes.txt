@@ -16,7 +16,7 @@ O que é devops e como funciona?
 
 A cultura devops se base em 5 pilares conhecido pela sigla "CALMS", CULTURA, AUTOMAÇÃO, LEAN/OU ESFORÇO (METODOLOGIA), MEDIÇÃO (MONITORAMENTO) ou COMPARTILHAMENTO (NO CASO COMPARTILHAMENTO EM INGLÊS SIGNIFICA SHARE).
 
-O primeiro pilar a "CULTURA" fala sobre a mudança de pensamento e comportamento dentro das empresas sobre as equipes para tornar-las mais colaborativas e comunicativas entre si, promovendo uma relação muito mais saudavel entre todas as equipes, com isso as equipes de infra e desenvolvimento ganha um certo impoderamento 
+O primeiro pilar a "CULTURA" fala sobre a mudança de pensamento e comportamento dentro das empresas sobre as equipes para tornar-las mais colaborativas e comunicativas entre si, promovendo uma relação muito mais saudavel entre todas as equipes, com isso as equipes de infra e desenvolvimento ganha um certo empoderamento, na medida em que passa a poder sugir algumas otimazações ou consertar pequenas falhas sem precisa interromper o projeto ou retornar o erro para outra equipe. 
 
 
 
