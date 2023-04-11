@@ -20,12 +20,11 @@ O que é devops e como funciona?
 
  No quisito "AUTOMAÇÃO" devops defende a construção de piplines para os processos repetitivos e que consome o tempo dos profissionais aumentando muito a produtividade da equipe e com isso as atividades que poderiam durar dias passa a durar horas ou até alguns minutos, então com o uso de piplines CI/CD ou seja de integração e entrega continua, esse processo dura poucos minutos, alem disso você evita falhas humanas desnecessárias em processos manuais, evitando o desgates e a desmotivação do profissional por executar os mesmo processos chatos o tempo todo e direcionar o foco dele para outras areas que demanda maior atenção, como a otimização do software e a resolução de imprevisto.
 
-utro pilar importante dis respeito aos conceitos de "Lean" a cultura devops defende o uso de mÃ©todologias ageis no processo de criaÃ§Ã£o de software de modo a promover o aumento da frequencia do ensicros ou seja as entegras com maior quantidade e tambÃ©m as entregas mais curtas ou seja utilizando esprints e dessa forma as soluÃ§Ãµes chega muito mais rapidas para os clientes e podem ser validadas e otimizadas com maior velocidade tambÃ©m.
+outro pilar importante dis respeito aos conceitos de "LEAN" a cultura devops defende o uso de gestão ágil no processo de criação de software de modo a promover o aumento da frequencia do ensicros ou seja as entegras com maior quantidade e também as entregas mais curtas ou seja utilizando esprints e dessa forma as soluções chega muito mais rapidas para os clientes e podem ser validadas e otimizadas com maior velocidade também.
 
-Com relaÃ§Ã£o as "MÃ©tricas" a cultura devops tambÃ©m defende que oque nÃ£o Ã© medido nÃ£o pode ser otimizado, por isso as sessÃµes de fedbacks e a escolha das metricas sÃ£o partes muito importantes no devops tanto no qe diz respeito a otimizaÃ§Ã£o de processos quanto a otimizaÃ§Ã£o do proprio software.
+Já as "MÉTRICAS" são extremamente importantes na cultura devops, porque oque não é medido não pode ser utimizado por isso as sessões periódicas de feedback e o cuidado na escolha das métricas que vão ser coletadas são fundamentais no devops, tanto para otimização do processo quanto para otimização do proprio software.
 
-Outro pilar caracteristicos do devops Ã© o "Compartilhamento" a ideia Ã© que as equipes compartilhe entre si conhecimentos e experiencias bem sucedidas ou nÃ£o pra realmente proporciona a equipe inteira uma evoluÃ§Ã£o garantindo sempre a melhoria continua.
-
+Outro pilar do devops é o "COMPARTILHAMENTO" a ideia é que as equipes compartilhem entre si conhecimentos e experiência sendo bem sucedidas ou não para proporcionar que a equipe inteira evoluam garantindo a melhoria contínua.
 
 
 COMO FUNCIONA A CULTURA DEVOPS.
