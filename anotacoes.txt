@@ -62,3 +62,14 @@ Implantação: Uma vez que o software tenha sido completamente testado e conside
 Manutenção: Após a implantação, o software pode passar por uma fase de manutenção, onde são feitas correções de bugs, atualizações de segurança, melhorias de desempenho e outras modificações necessárias ao longo do tempo.
 Uma das principais características do modelo waterfall é a sua abordagem sequencial, o que significa que cada fase deve ser concluída antes de prosseguir para a próxima. Isso pode levar a um processo lento e inflexível, uma vez que mudanças nos requisitos ou problemas identificados em fases posteriores podem exigir retrabalho nas fases anteriores. No entanto, o modelo waterfall pode ser útil em certos contextos, especialmente quando os requisitos são claros e estáveis desde o início do projeto. 
 
+
+# Como funciona a tecnologia de contêiner #
+
+Comparação entre a contêinerzação e a virtualização?
+
+ Na virtualização eu tenho como base a minha infraestruturas, logo acima eu tenho uma camada de virtualização utlizando Hyper-V, Virtual Box, VMWARE e etc...
+Por cima da virtualização eu tenho a criação da minha infra virtual aonde eu escolho o quanto de recurso eu vou destinar para cada máquina, criando essa infraestrutura virtual. Logo em seguida eu tenho SO (sistema operacional: Linux, Windows etc..) e a minha aplicação.
+ O problema do usa da virtualização é que para cada máquina virtual eu preciso instalar e gerenciar um sistema operacional fora o recurso que consome.
+ 
+ Já na conteinerização 
+ 
