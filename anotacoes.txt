@@ -27,20 +27,20 @@ Já as "MÉTRICAS" são extremamente importantes na cultura devops, porque oque 
 Outro pilar do devops é o "COMPARTILHAMENTO" a ideia é que as equipes compartilhem entre si conhecimentos e experiência sendo bem sucedidas ou não para proporcionar que a equipe inteira evoluam garantindo a melhoria contínua.
 
 
-COMO FUNCIONA A CULTURA DEVOPS.
+# COMO FUNCIONA A CULTURA DEVOPS #
 
-Como vocÃª jÃ¡ deve saber o ciclo de vida devops Ã© representado pelo simbolo do infinito, justamente para identificar a necessidade da melhoria continua se repetindo o tempo todo a cada entrega, Ã© importante lembrar que as equipes se comunicam e se colabora entre si em todas as fases garantindo o aliamento do time, a velocidade nas entregas e a qualidade do trabalho.
-SÃ£o 8 fases que fazem parte do ciclo devops:
+Como você já deve saber o ciclo de vida devops são representado pelo simbolo do infinito, justamente para identificar a necessidade da melhoria continua se repetindo o tempo todo a cada entrega, são importante lembrar que as equipes se comunicam e se colabora entre si em todas as fases garantindo o aliamento do time, a velocidade nas entregas e a qualidade do trabalho.
+São 8 fases que fazem parte do ciclo devops:
 
-Planejamento, CodificaÃ§Ã£o, ConstruÃ§Ã£o ou Build, Teste, empacomento ou release, deploy, operaÃ§Ã£o e monitoramento. 
+Planejamento, Codificação, Construção ou Build, Teste, empacomento ou release, deploy, operação e monitoramento. 
 
-Planejamento Ã© a parte do projeto onde vocÃª organiza oque vai ser feito, como, quem e quando vai ser entregue, ou seja, vocÃª define as tarefas, as agendas dos membros da equipe e as ferramentas que seram utilizadas, lembrando sempre de utilizar os conceitos da mÃ©todologia agio, como por exemplo as esprints de entrega e compartilhamento de informaÃ§Ãµes entre as equipes, atravÃ©s das ferramentas de gerenciamento de projetos como: jira, nochao, trello, slack ou teams.
+Planejamento são a parte do projeto onde você organiza oque vai ser feito, como, quem e quando vai ser entregue, ou seja, você define as tarefas, as agendas dos membros da equipe e as ferramentas que seram utilizadas, lembrando sempre de utilizar os conceitos da métodologia ágil, como por exemplo as esprints de entrega e compartilhamento de informações entre as equipes, através das ferramentas de gerenciamento de projetos como: jira, nochao, trello, slack ou teams.
 
-Na fase de condificaÃ§Ã£o os desenvolvedores vÃ£o codificar e revisar ali todo o cÃ³digo, o git Ã© muito utilizado para controle de versÃ£o pois alem de ser muito eficiente Ã© gratuito e opensource e alem disso Ã© fundamental o uso de uma ferramenta de compartilhamento entre equipes, como github ou gitlab.
+Na fase de codificação os desenvolvedores vão codificar e revisar ali todo o código, o git são muito utilizado para controle de versão pois alem de ser muito eficiente são gratuito e opensource e alem disso são fundamental o uso de uma ferramenta de compartilhamento entre equipes, como github ou gitlab.
 
-A fase de Build Ã© onde os cÃ³digos construidos pelos desenvolvedores sÃ£o convertidos em um entregavel ambiente, Ã© aqui que se inicia a pip-line de "CIA" nesse momento eu vou utilizar as ferramentas de gerenciamento de pacotes como: mavem, npm e nugget junto com o docker e ferramentas de pip-line de CIA como o jenkis, github accions ou gitlab cia.
+A fase de Build são onde os códigos construidos pelos desenvolvedores são convertidos em um entregavel ambiente, são aqui que se inicia a pip-line de "CIA" nesse momento eu vou utilizar as ferramentas de gerenciamento de pacotes como: mavem, npm e nugget junto com o docker e ferramentas de pip-line de CIA como o jenkis, github accions ou gitlab cia.
 
-A fase de testes Ã© onde Ã© executados os testes, as analises de cÃ³digo e verificaÃ§Ãµes de falhas, ou seja, Ã© onde eu testo realmente o se o cÃ³digo criado tem algum problema Ã© aqui que entra algumas ferramentas como jeyunit, nunit, sonarkilb e claro tudo isso rodando na pip-line de CIA.
+A fase de testes são onde são executados os testes, as analises de código e verificações de falhas, ou seja, são onde eu testo realmente o se o código criado tem algum problema são aqui que entra algumas ferramentas como jeyunit, nunit, sonarkilb e claro tudo isso rodando na pip-line de CIA.
 
 Na fase de Release Ã© aonde eu gero o artefato de entrega, pode ser meu arquivo executavel, a minha imagem docker, o meu arquivo ali .ja ou a, enfim Ã© oque vai ser usado para fazer o deploy em meu ambiente, e nesse ponto Ã© que entram as pip-lines de CID.
 
