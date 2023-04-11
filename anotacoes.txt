@@ -5,9 +5,21 @@ Aula 1 - Docker
 
 O que é devops e como funciona?
 
- O termo devops ganhou destaque em 2009 quando patrick debuar ele criou a primeira conferência devops day na belgica e representa as combinações dos termos desenvolvimento e operações. Ele surguiu como uma solução para acabar com o distânciamento entre as equipes de infraestrutura e desenvolvimento, Muito comum em modelos *waterfall* e também para diminuir o tempo entre uma entrega e outra.
- É Importante deixar claro que devops não é um cargo especifico e não é um conjunto de ferramentas, mas é sim uma cultura colaborativa que engloba: Práticas, Ferramentas e Filosofias.
+ O termo devops ganhou destaque em 2009 quando patrick debuar criou a primeira conferência devops day na belgica, e representa as combinações dos termos desenvolvimento e operações. Ele surguiu como uma solução para acabar com o distânciamento entre as equipes de infraestrutura e desenvolvimento, Muito comum em modelos *waterfall* e também para diminuir o tempo entre uma entrega e outra.
+ É Importante deixar claro que devops não é um cargo especifico e não é um conjunto de ferramentas, mas é sim uma cultura colaborativa que engloba, Práticas, Ferramentas e Filosofias, com o objetivo de: 
+
+- Automatizar e padronizar os processos de produção de software.
+- Integrar as equipes envolvidas no processo de produção de software.
+- E garantir mais produtividade e confiabilidade na entrega das aplicações.
  
+# Fundamentos de Devops para clariar #
+
+A cultura devops se base em 5 pilares conhecido pela sigla "CALMS", CULTURA, AUTOMAÇÃO, LEAN/OU ESFORÇO (METODOLOGIA), MEDIÇÃO (MONITORAMENTO) ou COMPARTILHAMENTO (NO CASO COMPARTILHAMENTO EM INGLÊS SIGNIFICA SHARE).
+
+O primeiro pilar a "CULTURA" fala sobre a mudança de pensamento e comportamento dentro das empresas sobre as equipes para tornar-las mais colaborativas e comunicativas entre si, promovendo uma relação muito mais saudavel entre todas as equipes, com isso as equipes de infra e desenvolvimento ganha um certo impoderamento 
+
+
+
 
 Significado waterfall: A metodologia waterfall, também conhecida como modelo cascata, é um modelo tradicional de desenvolvimento de software que segue uma abordagem sequencial e linear, onde cada fase do projeto é concluída antes de passar para a próxima. Aqui está um resumo das principais etapas do modelo waterfall:
 Definição de Requisitos: Nesta fase, os requisitos do projeto são coletados e documentados detalhadamente, com base nas necessidades dos usuários e nas expectativas dos stakeholders.
