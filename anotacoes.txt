@@ -18,6 +18,11 @@ O que é devops e como funciona?
 
  O primeiro pilar a "CULTURA" fala sobre a mudança de pensamento e comportamento dentro das empresas sobre as equipes para tornar-las mais colaborativas e comunicativas entre si, promovendo uma relação muito mais saudavel entre todas as equipes, com isso as equipes de infra e desenvolvimento ganha um certo empoderamento, na medida em que passa a poder sugir algumas otimazações ou consertar pequenas falhas sem precisa interromper o projeto ou retornar o erro para outra equipe. 
 
+ No quisito "AUTOMAÇÃO" devops defende a construção de piplines para os processos repetitivos e que consome o tempo dos profissionais aumentando muito a produtividade da equipe e com isso as atividades que poderiam durar dias passa a durar horas ou até alguns minutos, então com o uso de piplines CI/CD ou seja de integração e entrega continua, esse processo dura poucos minutos, alem disso você evita falhas humanas desnecessárias em processos manuais, evitando o desgates e a desmotivação do profissional por executar os mesmo processos chatos o tempo todo e direcionar o foco dele para outras areas que demanda maior atenção, como a otimização do software e a resolução de imprevisto.
+
+ LEAN, outro pilar importante, 
+
+
 
 Significado waterfall: 
  A metodologia waterfall, também conhecida como modelo cascata, é um modelo tradicional de desenvolvimento de software que segue uma abordagem sequencial e linear, onde cada fase do projeto é concluída antes de passar para a próxima. Aqui está um resumo das principais etapas do modelo waterfall:
