@@ -73,6 +73,7 @@ Por cima da virtualização eu tenho a criação da minha infra virtual aonde eu
  
  Já na contêinerização é diferente, tem camada de infraestrutura, o sistema operacional e em cima dele eu tenho um contêiner runtime e com ele eu tenho a execução dos meus contêineres que executão os meus processos, e esses processos podem ser uma aplicação .net, java, postgress, jeinks etc... e todos eles executados de forma isolada e eu só comunico eles entre si caso eu realmente queira. Sendo assim eu não tenho mais um monte de sistema operacionais para gerenciar e consumir recursos de máquina, pois o contêiner runtime simula o sistema operacional dos meus contêineres, ou seja, ele abstrai o sistema operacional para a minha aplicação.
  A Contêinerização traz simplicidade na gestão e bastante enconomia de recursos.
+ A ferramenta mais utilizada hoje em dia para trabalhar com contêiner sem duvida é o DOCKER, mas é importante dizer o seguinte, o DOCKER ele não criou a conteinerização, esse já é um conceito do linux que já existe a muito tempo, oque o docker fez foi criar um ferramental em volta para facilitar a criação e a execução de contêiner. (35:09)
 
  
  
