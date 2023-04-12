@@ -1,0 +1,70 @@
+# INSTALAR DOCKER - USANDO WSL #
+
+-> Usando script do docker
+
+- curl -fsSL https://get.docker.com | sh
+- sudo usermod -aG docker $USER -> colocar um usuário para executar docker. 
+
+Obs: estou instalando o docker engine.
+
+
+
+# Criando um container #
+
+docker container run hello-world
+
+docker container ls 
+docker container ls -a
+
+docker container run --name meucontainer hello-world
+docker container run --rm hello-world
+
+docker container rm <id or name>
+
+docker container run -it ubuntu /bin/bash
+docker container run -it --rm ubuntu /bin/bash
+
+docker container run nginx 
+docker container run -d nginx 
+
+docker exec -it <id or name> /bin/bash
+
+docker container run -d -p 8080:80 nginx
+
+docker container stop <id or name> and docker container rm <id or name>
+docker container rm -f <id or name>
+
+docker container run -d -p 5432:5432 -e POSTGRES_PASSWORD=analista -e POSTGRES_USER=tuliodevops -e POSTGRES_DB=tuliodevops postgres
+
+
+
+# Criando uma imagem - Dockerfile #
+
+vim Dockerfile
+
+FROM ubuntu
+RUN apt update -y
+RUN apt install curl -y
+
+docker build -t ubuntu-curl -f <local do dockerfile> 
+docker build -t ubuntu-curl . -> Quando o dockerfile já está na pasta.
+
+docker image ls
+
+docker container run -it ubuntu-curl /bin/bash
+
+FROM ubuntu
+RUN apt update -y && apt install curl -y
+
+docker image prune
+docker image rm <id or name>
+
+
+# Subindo a imagem no docker hub #
+
+
+
+
+
+
+
