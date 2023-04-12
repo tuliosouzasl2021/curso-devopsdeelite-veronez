@@ -62,6 +62,71 @@ docker image rm <id or name>
 
 # Subindo a imagem no docker hub #
 
+Opções de registry
+
+- Docker Hub
+- Elastic Container Registry
+- Azure Container Registry
+- Google Container Registry
+- Harbor - Utilizar em um servidor proprio.
+
+Vamos usar o docker hub, precisa criar a conta.
+
+-> Nomeando a sua imagem Docker
+
+fabricioveronez/api-conversao:v1
+      |
+Namespace (usuário docker hub) / repositorio (nome do projeto) : tag (versão da imagem)
+
+docker build -t fabricioveronez/ubuntu-curl:v1 . 
+
+docker login
+Username:
+Password:
+
+docker push fabricioveronez/ubuntu-curl:v1 
+
+docker tag fabricioveronez/ubuntu-curl:v1 fabricioveronez/ubuntu-curl:latest
+
+docker push fabricioveronez/ubuntu-curl:latest
+
+
+# Pegando a aplicação do zero no github, criar a imagem e subir para o repositorio e rodar no container #
+
+Fazer o fork no git: https://github.com/KubeDev/conversao-temperatura
+
+vim Dockerfile
+FROM node
+WORKDIR /app
+COPY package*.json ./
+RUN npm install -y
+COPY . .
+EXPOSE 8080
+CMD ["node", "server.js"]
+
+docker build -t fabricioveronez/conversao-temperatura:v1 .
+
+vim Dockerfile
+FROM node:18.11.0
+WORKDIR /app
+COPY package*.json ./
+RUN npm install -y
+COPY . .
+EXPOSE 8080
+CMD ["node", "server.js"]
+
+docker build -t fabricioveronez/conversao-temperatura:v1 .
+
+docker image prune
+
+docker push fabricioveronez/conversao-temperatura:v1
+
+docker tag fabricioveronez/conversao-temperatura:v1 fabricioveronez/conversao-temperatura:latest
+
+docker push fabricioveronez/conversao-temperatura:latest
+
+docker container run -d -p 8080:8080 fabricioveronez/conversao-temperatura:v1 
+
 
 
 
