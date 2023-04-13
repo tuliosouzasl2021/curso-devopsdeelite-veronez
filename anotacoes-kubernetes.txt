@@ -1,0 +1,8 @@
+# INSTALAÇÃO #
+
+k3d e kubectl
+
+k3d: https://k3d.io/v5.4.9/
+kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+
+
