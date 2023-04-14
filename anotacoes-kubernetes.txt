@@ -61,10 +61,12 @@ kubectl describe pod meupod	-- > ver mais detalhes do seu pod, o meupod é o nom
 kubectl describe pod/meupod	-- > ver mais detalhes do seu pod, o meupod é o nome que vc deu para ele no arquivo yaml.
 kubectl port-forward pod/meupod 8080:80		-- > ele vai fazer o portbind igual faz no docker.
 kubectl delete pod meupod  	-- > deleta o pod informado.
-
+kubectl delete -f pod.yaml	-- > deletar o pod apartir do arquivo yaml de manifesto de criação.
 
 # labels  e selector #
 
+Labels vc cria para poder dar um apelido para o pod, replicaset e etc....
+no caso abaixo está atribuida ao pod: meupod-azul e meupod-verde, nesse caso estamos criando 2 pods em um arquivo yaml só, separados pelo o caracter: ---
 
 
 Arquivo pod.yaml
@@ -90,18 +92,22 @@ metadata:
 spec:
  containers:
  - name: site
-   image: fabricioveronez/web-page:blue
+   image: fabricioveronez/web-page:green
    ports:
    - containerPort: 80
 
 kubectl get pods -l cor=verde
 kubectl get pods -l cor=azul
 
+kubectl delete pods -l cor=azul
+kubectl delete pods -l cor=verde
 
 
 o replicaset é um controlador responsavel por gerenciar os meus pods e sempre manter ele de pe.
 
 criando o replicaset para configurar a quantidade de replicas.
+
+kubectl api-resources 	-- > validar a versão do objeto.
 
 arquivo: replicaset.yaml
 apiVersion: apps/v1
