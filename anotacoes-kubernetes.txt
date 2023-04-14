@@ -1,8 +1,203 @@
-# INSTALAÇÃO #
+# ANOTAÇÕES KUBERNETES # 
 
-k3d e kubectl
-
-k3d: https://k3d.io/v5.4.9/
-kubectl: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+Como você pode ver na primeira aula o devops representa um fluxo continuo de produção de software, então tão importante quando saber operar uma ferramenta especifica, é saber conectala no fluxo com as ferramentas. Inclusive essa é uma das minhas prioridades no devopspro, dar a clareza na integração das ferramentas.
 
 
+# CHEGOU A HORA DE CONHECER O KUBERNETES #
+
+Lembra que eu te falei na aula 1 que existe alguns problemas relacionadas a containers como por exemplo: escalabilidade, reseliência que o docker não resolve? então, o kubernetes vem justamente para trazer essas soluções orquestrado os containers e automatizando os processos.
+
+Com ele é possivel garantir, resiliência e escalabilidade nas minhas aplicações, ou seja, eu consigo garantir que a minha aplicação não caia, alem de conseguir escalar e adequar a aplicação para um aumento de carga, alem disso eu consigo fazer o "BALANCIAMENTO DE CARGA" entre as replicas no momento em que escalo a aplicação, com isso eu evito a sobre carga de uma das replicas distribuindo a carga entre todas elas, e tem mais, eu não preciso ficar procurando um processo expecifico pois o "SERVICE DISCOVERY" disponivel no kubernetes  
+
+# COMANDOS KUBERNETES #
+
+k3d cluster create
+k3d cluster create meucluster
+k3d cluster list 
+k3d cluster create meucluster2 --no-lb
+k3d cluster delete
+k3d cluster create meucluster --servers 3 --agents 3
+
+kubectl get nodes
+
+
+# POD #
+
+Menor elemento do kubernetes é nele que executo os meus containers.
+
+-> COMO CRIAR MEU POD NO CLUSTER KUBERNETES 
+
+OBS: PARA CRIAR QUALQUER OBJETO NO CLUSTER KUBERNETES EU PRECISO CRIAR UM ARQUIVO DE MANIFESTO, OQ SERIA ESSE ARQUIVO DE MANIFESTO, É UM ARQUIVO YAML COM TODOS OS DADOS QUE EU QUERO CRIAR ALI PARA ESSE OBJETO NO CLUSTER KUBERNETES, VOU COLOCAR TODOS OS METADADOS e TODAS ESPECIFICAÇÃO QUE EU QUERO CRIAR E VOU APLICAR ISSO NO CLUSTER KUBERNETES ELE VAI LA E CRIA PARA MIM.
+
+pod.yaml
+apiVersion:
+kind:
+metadata:
+spec:
+
+ESSES CAMPOS SÃO OS PRINCIPAIS EM QUALQUER MANIFESTO NO CLUSTER DE KUBERNETES.
+
+No apiVersion eu vou expecificar o grupo de apis que eu vou utilizar para esse objeto, como eu faço para saber o grupo, comando abaixo:
+kubectl api-resources, esse cara vai nos mostrar todos os objetos que eu tenho disponiveis nesse cluster de kubernetes e ele fala também qual é o apiversion.
+Por exemplo, vamos criar um pod e la mostra o apiversion dele.
+
+pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+ name: meupod
+spec:
+ containers:
+ - name: site
+   image: fabricioveronez/web-page:blue
+   ports:
+   - containerPort: 80
+
+kubectl apply -f pod.yaml    --- > vou criar ou atualizar
+kubectl create -f pod.yaml   --- > vou só criar
+
+kubectl get pods	--- > lista os pods, o "kubectl get" sempre lista um objeto do cluster de kubernetes.
+kubectl describe pod meupod	-- > ver mais detalhes do seu pod, o meupod é o nome que vc deu para ele no arquivo yaml.
+kubectl describe pod/meupod	-- > ver mais detalhes do seu pod, o meupod é o nome que vc deu para ele no arquivo yaml.
+kubectl port-forward pod/meupod 8080:80		-- > ele vai fazer o portbind igual faz no docker.
+kubectl delete pod meupod  	-- > deleta o pod informado.
+
+
+# labels  e selector #
+
+
+
+Arquivo pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+ name: meupod-azul
+ labels:
+  cor: azul
+spec:
+ containers:
+ - name: site
+   image: fabricioveronez/web-page:blue
+   ports:
+   - containerPort: 80
+---
+apiVersion: v1
+kind: Pod
+metadata:
+ name: meupod-verde
+ labels:
+  cor: verde
+spec:
+ containers:
+ - name: site
+   image: fabricioveronez/web-page:blue
+   ports:
+   - containerPort: 80
+
+kubectl get pods -l cor=verde
+kubectl get pods -l cor=azul
+
+
+
+o replicaset é um controlador responsavel por gerenciar os meus pods e sempre manter ele de pe.
+
+criando o replicaset para configurar a quantidade de replicas.
+
+arquivo: replicaset.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: meureplicaset
+spec:
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: site
+     image: fabricioveronez/web-page:blue
+     ports:
+     - containerPort: 80
+
+kubectl apply -f replicaset.yaml
+
+kubectl get pods 	-- > o nome do pode é criado randomicamente, com o nome do meu replicaset que nesse exemplo é: "meureplicaset-xxxxx"
+
+kubectl get replicaset 	-- > listagem dos meus replicasets
+
+kubctl describe replicaset meureplicaset 	-- > detalhes do meu replicaset
+
+
+arquivo: replicaset.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: meureplicaset
+spec:
+ replicas: 5
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: site
+     image: fabricioveronez/web-page:blue
+     ports:
+     - containerPort: 80
+
+colocando 5 replicas.
+
+kubectl describe replicaset meureplicaset
+
+kubectl delete pod meureplicaset-xxxxx
+
+arquivo: replicaset.yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+ name: meureplicaset
+spec:
+ replicas: 5
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: site
+     image: fabricioveronez/web-page:green
+     ports:
+     - containerPort: 80
+
+mudando da pagina blue para green, porém o pod só vai aceitar essa configuração quando eu matar ele e o replicaset criar um novo, sendo assim ele gera um pod novo com essa nova imagem,
+nesse caso nos alteramos a imagem do container, com tudo isso existe o deployment que gerencia os replicasets..
+
+kubectl get pods
+
+kubectl get replicaset meureplicaset
+
+kubectl describe replicaset meureplicaset 	-- > sendo assim ele mudou a imagem para o green no replicaset, porém ele não mudou nos pods, porque ele só vai mudar quando o pod morrer ou alguem força o pod que ainda está com a config antiga morrer, sendo assim o replicaset não faz esse gerenciamento e quem toma conta disso é o deployment.
+
+kubectl get pods
+
+kubectl describe pod meureplicaset-xxxxx	-- > ele está com a imagem blue ainda.
+
+kubectl delete pod meureplicaset-xxxxx		-- > quando ocorrer o delete desse pod o replicaset vai gerar um novo pod, pois nas configurações do replicaset ele precisa ter 5 replicas sempre, nesse caso o pod que subir, vai subir com a imagem green.
+
+kubectl describe pod meureplicaset-yyyyy 	-- > pod novo com a imagem green.
+
+
+
+
+# deployment # -> TEMPO 1:22:00
