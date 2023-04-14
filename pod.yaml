@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: meupod
+spec:
+ containers:
+ - name: site
+   image: fabricioveronez/web-page:blue
+   ports:
+   - containerPort: 80   
