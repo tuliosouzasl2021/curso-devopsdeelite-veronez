@@ -207,7 +207,102 @@ kubectl describe pod meureplicaset-yyyyy 	-- > pod novo com a imagem green.
 
 O deployment é um controlador que fica acima do replicaset gerenciando as versões do replicaset.
 
-O replicaset garante que a quantidade desejada de replicas e a que vai estar em execução no cluster de kubernetes ou pelo menos ele tenta fazer isso, já o deploymente ele vai gerenciar as versões do replicaset, porque quando é alterado alguma especificação no pod que está rodando naquele momento ele vai gerar um novo replicaset com a especificação alterada, já o antigo se mantem la do jeito que tava, só que a diferença é que os pods que vão estar em execução.
+O replicaset garante que a quantidade desejada de replicas e a que vai estar em execução no cluster de kubernetes ou pelo menos ele tenta fazer isso, já o deploymente ele vai gerenciar as versões do replicaset, porque quando é alterado alguma especificação no pod que está rodando naquele momento ele vai gerar um novo replicaset com a especificação alterada, já o antigo se mantem la do jeito que tava, só que a diferença é que os pods que vão estar em execução não vão ser mais gerenciado por ele vão ser gerenciado progressivamente pelo novo replicaset, então aos poucos os pods vão sendo criado no novo replicaset e vão sendo elimitados ali do antigo replicaset, porém o antigo replicaset fica la, porque caso ocorra um problema nessa nova versão eu consigo fazer o roolback no antigo replicaset.
+
+
+arquivo: deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: meudeployment
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: site
+     image: fabricioveronez/web-page:blue
+     ports:
+     - containerPort: 80
+
+kubectl apply -f deployment.yaml
+
+kubectl get pods
+
+kubectl get replicaset 
+
+arquivo: deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: meudeployment
+spec:
+ replicas: 5 
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: site
+     image: fabricioveronez/web-page:blue
+     ports:
+     - containerPort: 80
+
+kubectl apply -f deployment.yaml
+
+kubectl get pods
+
+arquivo: deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: meudeployment
+spec:
+ replicas: 5 
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: site
+     image: fabricioveronez/web-page:green
+     ports:
+     - containerPort: 80
+
+kubectl apply -f deployment.yaml
+
+ele está progressivamente mudando os pods para a imagem green e tirando os pods do antigo replicaset, porém o antigo replicaset ainda fica criado, pois se der merda conseguimos voltar com o comando abaixo:
+
+kubectl rollout undo deployment meudeployment
+
+kubectl get replicaset 
+
+kubectl get pod meudeployment-xxxxxx-xxxxxx
+
+kubectl port-forward pod/meuployment-xxxxxx-xxxxx 8080:80 
+
+
+COmo estamos trabalhando com varias replicas precisamos de um ponto unico de comunicação para encontrar o endereçamento dos meus pods e também fazer o balaceamento de carga entre eles, porque n adianta replicar e ter os pods se eu estou mandando requisição apenas para um pod.
+
+Agora vamos aprender a fazer isso utilizando o services.
 
 
 
+
+
+
+# SERVICES #
