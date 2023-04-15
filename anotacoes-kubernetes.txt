@@ -203,7 +203,11 @@ kubectl delete pod meureplicaset-xxxxx		-- > quando ocorrer o delete desse pod o
 
 kubectl describe pod meureplicaset-yyyyy 	-- > pod novo com a imagem green.
 
-
-
-
 # deployment # -> TEMPO 1:22:00
+
+O deployment é um controlador que fica acima do replicaset gerenciando as versões do replicaset.
+
+O replicaset garante que a quantidade desejada de replicas e a que vai estar em execução no cluster de kubernetes ou pelo menos ele tenta fazer isso, já o deploymente ele vai gerenciar as versões do replicaset, porque quando é alterado alguma especificação no pod que está rodando naquele momento ele vai gerar um novo replicaset com a especificação alterada, já o antigo se mantem la do jeito que tava, só que a diferença é que os pods que vão estar em execução.
+
+
+
