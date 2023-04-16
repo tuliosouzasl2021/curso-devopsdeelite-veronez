@@ -302,7 +302,491 @@ Agora vamos aprender a fazer isso utilizando o services.
 
 
 
-
-
-
 # SERVICES #
+
+Ele é responsalve por expor os pods.
+
+
+O service é o elemento que vai gerar a comunicação entre os pods, não só a comunicação entre os pods mas também externamento no cluster kubernetes, então toda vez que voc~e tiver uma aplicação que está rodando em um pod e vai se comunica com outro pods que vai ser uma outra aplicação o cenario de microserviço está ai é isso que vai acontcer, você vai fazer a comunicação de um pod para outro através do services, existem alguns tipos de pods, segue abaixo alguns deles:
+
+TIPO DE SERVICE
+
+* ClusterIP
+-> É justamento o service que vai se comunicar internamente no cluster de kubernetes, ele tem um ip porém vc não vai utilizar o ip não é utilizado ip quando você trabalha em container, mas ele é o ponto de comunicação dos pods internamente no cluster de kubernetes, não é utilizado o ClusterIP para comunicação externa só interna.
+
+
+* NodePort
+-> Já o tipo nodeport é diferente, você consegue expor seus serviços externamente, então o usuário que está fora do cluster consegue acessar a aplicação, porém o acesso vai ser apartir de um dos nós do cluster de kubernetes, então para ter acesso o service e para acessar os pods você vai utilizar o ip de um dos nós do cluster.
+É importante dizer que o Service do tipo NodePort ele elege uma porta entre o range de 30000 a 32767 para ser a porta de comunicação.
+
+
+* LOadBalancer
+-> Já o tipo LoadBalancer ele cria um ip publico para ser utilizado como acesso ao service, dessa forma você vai consumir um serviço do seu provedor de nuvem, então o loadbalancer na maioria dos casos é utilizado em casos que voc~e está consumido um kubernetes de um cloud provider (aws, digitalocean etc..).
+
+
+Criando um services 
+
+
+arquivo: deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: meudeployment
+spec:
+ replicas: 5 
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: site
+     image: fabricioveronez/web-page:green
+     ports:
+     - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: web-page
+spec:
+ selector:
+  app: web
+ ports:
+  - port: 80
+    protocol: TCP
+ type: NodePort
+
+kubectl apply -f deployment.yaml
+
+kubectl get services or kubectl get svc
+
+kubect get all 
+
+kubectl port-forward service/web-page 8080:80 
+
+aumentar para 10 replicas
+
+kubectl apply -f deployment.yaml
+
+mudar a imagem para blue
+
+kubectl apply -f deployment.yaml
+
+manter o port forward não é uma boa porque toda hora que você mudar a porta do node vai mudar tbm, então vamos expor uma porta em um dos nós de kubernetes.
+
+atráves do k3d eu consigo fazer um port bind.
+
+k3d cluster delete meucluster
+
+k3d cluster create meucluster -p "80:30000@loadbalancer"
+
+kubectl get pods
+
+kubeclt get nodes
+
+docker container ls
+
+então ele fez o portbind para a 30000.
+
+kubectl apply -f deployment.yaml
+
+kubectl get svc 
+
+nesse caso ele subiu uma porta diferente de 30000, porém existe um objeto no service que é utilziado apenas no nodePort que é para você definir a porta dele.
+
+arquivo: deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: meudeployment
+spec:
+ replicas: 5 
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metadata:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: site
+     image: fabricioveronez/web-page:green
+     ports:
+     - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: web-page
+spec:
+ selector:
+  app: web
+ ports:
+  - port: 80
+    protocol: TCP
+ type: NodePort
+ nodePort: 30000
+
+kubectl apply -f deployment.yaml
+
+kubectl get svc 
+
+agora ele vai utilizar a porta 30000 e agora vai funcionar. 
+
+
+
+Projeto kube-news
+
+k3d cluster delete meucluster
+
+k3d cluster create meucluster -p "80:30000@loadbalancer"
+
+fazer o fork do projeto github.com/KubeDev/kube-news
+
+git clone git@github.com:tuliosouzasl2021/kube-news.git .
+
+
+passo a passo para fazer o deploy da aplicação.
+
+vim Dockerfile
+FROM node:18.11.0
+WORKDIR /app
+COPY package*.json ./
+RUN npm install -y
+COPY . .
+EXPOSE 8080
+CMD ["node", "server.js"]
+
+docker build -t tuliosouzasl2021/kube-news:v1 . or docker build -t tuliosouzasl2021/kube-news:v1 -f Dockerfile
+
+docker image ls
+
+docker push tuliosouzasl2021/kube-news:v1 
+
+se não subir usar o docker login
+
+docket tag tuliosouzasl2021/kube-news:v1 tuliosouzasl2021/kube-news:latest
+
+docker push tuliosouzasl2021/kube-news:latest
+
+criação do manifesto do kubernetes.
+
+mkdir k8s
+vim deployment.yaml
+
+obs: essa aplicação utiliza um banco de dados postgres e a aplicação, então precisamos fazer dois deployments, um do postgres e da aplicação, vamos começar com o do postgres.
+
+vim deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: postgre
+spec:
+ selector:
+  matchLabels:
+   app: postgre
+ template:
+  metada:
+   labels:
+    app: postgre
+  spec:
+   containers:
+   - name: postgre
+     image: postgres:15.0
+     ports:
+     - containerPort: 5432
+     env:
+     - name: POSTGRES_DB
+       value: "kubenews"
+     - name: POSTGRES_USER
+       value: "kubenews"
+     - name: POSTGRES_PASSWORD
+       value: "Pg#123"
+---
+apiVersion: v1
+kind: Service
+metada:
+ name: postgre
+spec:
+ selector:
+  app: postgre
+ ports:
+ - port: 5432
+ type: CLusterIP
+
+kubectl apply -f deployment.yaml
+
+kubectl get all
+
+kubectl port-forward service/postgre 5432:5432
+
+vim deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: postgre
+spec:
+ selector:
+  matchLabels:
+   app: postgre
+ template:
+  metada:
+   labels:
+    app: postgre
+  spec:
+   containers:
+   - name: postgre
+     image: postgres:15.0
+     ports:
+     - containerPort: 5432
+     env:
+     - name: POSTGRES_DB
+       value: "kubenews"
+     - name: POSTGRES_USER
+       value: "kubenews"
+     - name: POSTGRES_PASSWORD
+       value: "Pg#123"
+---
+apiVersion: v1
+kind: Service
+metada:
+ name: postgre
+spec:
+ selector:
+  app: postgre
+ ports:
+ - port: 5432
+ type: CLusterIP
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: web
+spec:
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metada:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: web
+     image: tuliosouzasl2021/kube-news:v1
+     ports:
+     - containerPort: 8080
+     env:
+     - name: DB_DATABASE 
+       value: "kubenews"
+     - name: DB_USERNAME
+       value: "kubenews"
+     - name: DB_PASSWORD
+       value: "Pg#123" 
+     - name: DB_HOST
+       value: "postgre"
+---
+apiVersion: v1
+kind: Service
+metada:
+ name: web
+spec:
+ selector:
+  app: web
+ ports:
+ - port: 80
+   targetPort: 8080
+   nodePort: 30000
+ type: NodePort 
+
+kubectl apply -f deployment.yaml
+
+kubectl get pods
+
+aumentamos as replicas da aplicação para 4 e depois para 10
+
+vim deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: postgre
+spec:
+ selector:
+  matchLabels:
+   app: postgre
+ template:
+  metada:
+   labels:
+    app: postgre
+  spec:
+   containers:
+   - name: postgre
+     image: postgres:15.0
+     ports:
+     - containerPort: 5432
+     env:
+     - name: POSTGRES_DB
+       value: "kubenews"
+     - name: POSTGRES_USER
+       value: "kubenews"
+     - name: POSTGRES_PASSWORD
+       value: "Pg#123"
+---
+apiVersion: v1
+kind: Service
+metada:
+ name: postgre
+spec:
+ selector:
+  app: postgre
+ ports:
+ - port: 5432
+ type: CLusterIP
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: web
+spec:
+ replicas: 10
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metada:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: web
+     image: tuliosouzasl2021/kube-news:v1
+     ports:
+     - containerPort: 8080
+     env:
+     - name: DB_DATABASE 
+       value: "kubenews"
+     - name: DB_USERNAME
+       value: "kubenews"
+     - name: DB_PASSWORD
+       value: "Pg#123" 
+     - name: DB_HOST
+       value: "postgre"
+---
+apiVersion: v1
+kind: Service
+metada:
+ name: web
+spec:
+ selector:
+  app: web
+ ports:
+ - port: 80
+   targetPort: 8080
+   nodePort: 30000
+ type: NodePort 
+
+
+vamos alterar no codigo o nome do navbar e fazer todo o processo de deploy no cluster de kubernetes.
+
+docker build -t tuliosouzasl2021/kube-news:v2 . 
+docker build -t tuliosouzasl2021/kube-news:v2 -f Dockerfile
+
+docker push tuliosouzasl2021/kube-news:v2 
+
+vim deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: postgre
+spec:
+ selector:
+  matchLabels:
+   app: postgre
+ template:
+  metada:
+   labels:
+    app: postgre
+  spec:
+   containers:
+   - name: postgre
+     image: postgres:15.0
+     ports:
+     - containerPort: 5432
+     env:
+     - name: POSTGRES_DB
+       value: "kubenews"
+     - name: POSTGRES_USER
+       value: "kubenews"
+     - name: POSTGRES_PASSWORD
+       value: "Pg#123"
+---
+apiVersion: v1
+kind: Service
+metada:
+ name: postgre
+spec:
+ selector:
+  app: postgre
+ ports:
+ - port: 5432
+ type: CLusterIP
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: web
+spec:
+ replicas: 10
+ selector:
+  matchLabels:
+   app: web
+ template:
+  metada:
+   labels:
+    app: web
+  spec:
+   containers:
+   - name: web
+     image: tuliosouzasl2021/kube-news:v2
+     ports:
+     - containerPort: 8080
+     env:
+     - name: DB_DATABASE 
+       value: "kubenews"
+     - name: DB_USERNAME
+       value: "kubenews"
+     - name: DB_PASSWORD
+       value: "Pg#123" 
+     - name: DB_HOST
+       value: "postgre"
+---
+apiVersion: v1
+kind: Service
+metada:
+ name: web
+spec:
+ selector:
+  app: web
+ ports:
+ - port: 80
+   targetPort: 8080
+   nodePort: 30000
+ type: NodePort 
+
+kubectl apply -f deployment.yaml
+
+
+
+
+
+
+
+
