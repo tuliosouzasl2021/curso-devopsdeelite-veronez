@@ -3,3 +3,53 @@
 Terraform x Ansible
 
 
+
+# Resources
+
+resource "digitalocean_droplet" "maquina_labs_tf" {
+image = "ubuntu-20-04-x64"
+name = "maquina-labs-tf"
+region = "nyc1"
+size = "s-1vcpu-2gb"
+}
+
+# Data Sources
+
+data "digitalocean_ssh_key" "minha_chave" {
+name = "aula"
+}
+
+# Providers
+
+provider "digitalocean" {
+toke = ""
+}
+
+# Terraform Settings
+
+terraform {
+required_version = ">1.0"
+required_providers {
+digitalocean = {
+source = "digitalocean/digitalocean"
+version = "2.16.0"
+}
+}	
+}
+
+# Variables
+
+variable "regiao"{
+type = strings
+default = "nyc1"
+description = "Região de uso na Digital Ocean"
+
+} 
+
+# Outputs
+
+output "droplet_ip"{
+value = digitalocean_droplet.maquina_labs_tf.ipva_address
+}
+
+
